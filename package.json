@@ -1,0 +1,20 @@
+{
+  "name": "solar-system",
+  "version": "1.0.0",
+  "description": "a solar system model",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "author": "hottunasandwich",
+  "license": "ISC",
+  "devDependencies": {
+    "three": "^0.115.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}

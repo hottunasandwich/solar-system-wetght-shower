@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+input[type=text] {
+    color: white;
+    border: none;
+}
+.planet {
+    display: inline-block;
+}
+#sun > img {
+    height: 100vh;
+}
+canvas {
+    display: block;
+}
