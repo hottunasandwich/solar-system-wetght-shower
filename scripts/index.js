@@ -2,112 +2,59 @@ import * as THREE from 'three'
 import { inputSize, planetFixSize } from './consts'
 import planets from './statics/Planets';
 
+var renderlist = []
+
+function init() {
 
 
-function init () {
+    planets.forEach((value) => {
+        var scene = new THREE.Scene();
 
-    var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100)
+        camera.position.z = 2
 
+        var texture = new THREE.TextureLoader().load(`./../images/${value.name}_.jpg`)
 
+        var geometry = new THREE.SphereGeometry(planetFixSize, 100, 100)
 
-    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0, 100 )
-    camera.position.z = 5
+        var material = new THREE.MeshLambertMaterial({ map: texture })
 
-    var helper = new THREE.CameraHelper( camera );
-    scene.add( helper )
+        var mesh = new THREE.Mesh(geometry, material)
+        scene.add(mesh)
 
-    planets.forEach( (value, index) => {
+        var light = new THREE.AmbientLight(0x404040, 4); // soft white light
+        light.position.z = 5
+        scene.add(light);
 
-        var texture = new THREE.TextureLoader().load(`./../images/${value.name.toLowerCase()}_.jpg`)
+        var renderer = new THREE.WebGLRenderer({ anitalias: true });
 
-        var geometry = new THREE.SphereGeometry( planetFixSize, 100, 100 )
+        renderer.setSize(window.innerWidth / 5, window.innerWidth / 5);
+        renderer.setClearColor(0x000000);
+        document.body.appendChild(renderer.domElement);
 
-        if ( value.star ) {
+        renderlist.push({
+            renderer: renderer,
+            scene: scene,
+            camera: camera,
+            mesh: mesh,
+            star: value.star
+        })
 
-            var material = new THREE.MeshPhongMaterial({ map: texture })
-
-        } else {
-
-            var material = new THREE.MeshLambertMaterial({ map: texture })
-
-        }
-
-        var mesh = new THREE.Mesh( geometry, material )
-
-        mesh.position.set( index * 5 , parseInt( index / 5 ) * 5, 0 )
-
-        scene.add( mesh )
-
-        console.log('added')
-    } )
-
-
-
-    var light = new THREE.PointLight( 0xFFFFFF, 10, 100 )
-
-    light.position.copy( camera.position )
-
-    scene.add(light)
-
-
-
+    })
     // create renderer
-    var renderer = new THREE.WebGLRenderer({anitalias: true});
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    renderer.setClearColor( 0xFFFFFF );
-
-    document.body.appendChild(renderer.domElement);
-
 }
 
 
 function render() {
-
     requestAnimationFrame(render);
-
-    renderer.render(scene, camera);
-
+    renderlist.forEach((value) => {
+        value.renderer.render(value.scene, value.camera)
+        if (value.star === false || value.star === undefined) {
+            value.mesh.rotation.y += 0.02
+        }
+    })
 }
 
 
 init()
 render()
-
-
-document.addEventListener( 'keypress', function ( event ) {
-
-    event.preventDefault()
-
-    console.log(event.keyCode)
-
-    switch ( event.keyCode ) {
-
-        case 199:
-
-            camera.position.set( 0, 1, 0 )
-
-            break;
-        
-        case 97:
-
-            camera.position.set( -1, 0, 0 )
-
-            break;
-        
-        case 115:
-
-            camera.position.set( 0, -1, 0 )
-
-            break;
-
-        case 100:
-
-            camera.position.set( 1, 0, 0)
-            break;
-        default:
-            break;
-    }
-
-} )
