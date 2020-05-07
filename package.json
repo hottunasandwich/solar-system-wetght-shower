@@ -2,16 +2,18 @@
   "name": "solar-system",
   "version": "1.0.0",
   "description": "a solar system model",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "electron": "electron ."
   },
   "author": "hottunasandwich",
   "license": "ISC",
   "devDependencies": {
+    "electron": "^8.2.5",
     "three": "^0.115.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",

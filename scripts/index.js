@@ -12,7 +12,7 @@ function init() {
         var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100)
         camera.position.z = 2
 
-        var texture = new THREE.TextureLoader().load(`./../images/${value.name.toLowerCase()}_.jpg`)
+        var texture = new THREE.TextureLoader().load(`./images/${value.name.toLowerCase()}_.jpg`)
 
         var geometry = new THREE.SphereGeometry(planetFixSize, 100, 100)
 
