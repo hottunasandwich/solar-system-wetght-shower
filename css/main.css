@@ -20,8 +20,14 @@ input[type=text] {
     color: white;
     text-align: right;
 }
+.weight {
+    color: white;
+}
+.container {
+    direction: rtl;
+}
 
-div:not(.name){
+div:not(.container){
     position: absolute;
     transform: translate(-50%, -50%);
 }

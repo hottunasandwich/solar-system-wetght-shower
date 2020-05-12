@@ -7,6 +7,8 @@ import ipcRenderer from './assets/ipc-renderer'
 ////////////////////////////////////////////////////////////////////////////////
 var renderlist = []
 
+window.planets = planets
+
 function init() {
 
     ipcRenderer()
@@ -50,16 +52,23 @@ function init() {
         renderer.setSize(( window.innerWidth / 9 ) * value.box.width, ( window.innerWidth / 9 ) * value.box.width );
         renderer.setClearColor(0x000000, 0);
 
-        console.log(value.name)
-
         var box = document.querySelector(`#${value.name.toLowerCase()}`)
-        console.log(box)
+
         box.appendChild(renderer.domElement)
         
         var node = document.createElement('div')
+        var w = document.createElement('span')
+        var n = document.createElement('span')
 
-        node.innerHTML = value.persianName
-        node.setAttribute('class', 'name')
+        w.setAttribute('class', 'weight')
+        n.setAttribute('class', 'name')
+
+        node.setAttribute('class', 'container')
+
+        node.appendChild(n)
+        node.appendChild(w)
+
+        n.innerHTML = value.persianName
 
         box.appendChild(node)
 

@@ -8,7 +8,8 @@ var earth = {
     box: {
         width: 1
     },
-    persianName: 'زمین'
+    persianName: 'زمین',
+    scale: 1
 }
 var moon = {
     name: 'Moon',
@@ -19,7 +20,8 @@ var moon = {
     box: {
         width: 1
     },
-    persianName: 'ماه'
+    persianName: 'ماه',
+    scale: 0.1655
 }
 var mercury = {
     name: 'Mercury',
@@ -31,7 +33,8 @@ var mercury = {
     box: {
         width: 1
     },
-    persianName: 'عطارد'
+    persianName: 'عطارد',
+    scale: 0.3770
 }
 var venus = {
     name: 'Venus',
@@ -43,7 +46,8 @@ var venus = {
     box: {
         width: 1
     },
-    persianName: 'زهل'
+    persianName: 'زهره',
+    scale: 0.9032
 }
 var mars = {
     name: 'Mars',
@@ -55,7 +59,8 @@ var mars = {
     box: {
         width: 1
     },
-    persianName: 'مریخ'
+    persianName: 'مریخ',
+    scale: 0.3895
 }
 var jupiter = {
     name: 'Jupiter',
@@ -67,7 +72,8 @@ var jupiter = {
     box: {
         width: 1
     },
-    persianName: 'مشتری'
+    persianName: 'مشتری',
+    scale: 2.640
 }
 var saturn = {
     name: 'Saturn',
@@ -82,7 +88,8 @@ var saturn = {
     box: {
         width: 1.5
     },
-    persianName: 'سیترن'
+    persianName: 'زحل',
+    scale: 1.139
 }
 var uranus = {
     name: 'Uranus',
@@ -94,7 +101,8 @@ var uranus = {
     box: {
         width: 1
     },
-    persianName: 'ارانوس'
+    persianName: 'ارانوس',
+    scale: 0.917
 }
 var neptune = {
     name: 'Neptune',
@@ -106,7 +114,8 @@ var neptune = {
     box: {
         width: 1
     },
-    persianName: 'نپتون'
+    persianName: 'نپتون',
+    scale: 1.148
 }
 var sun = {
     name: 'Sun',
@@ -119,7 +128,8 @@ var sun = {
     box: {
         width: 2
     },
-    persianName: 'خورشید'
+    persianName: 'خورشید',
+    scale: 27.90
 }
 var planets = [mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune, sun]
 
