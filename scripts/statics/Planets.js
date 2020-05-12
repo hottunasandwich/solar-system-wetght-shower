@@ -1,63 +1,125 @@
 var earth = {
     name: 'Earth',
-    radius: 2.5,
+    radius: 1,
     index: 3,
-    distance: 3
+    distance: 3,
+    speed: 1674,
+    z: 23,
+    box: {
+        width: 1
+    },
+    persianName: 'زمین'
 }
 var moon = {
     name: 'Moon',
-    radius: 0.2,
+    radius: 1,
     index: 4,
-    distance: 3.5
+    distance: 3.5,
+    speed: 0,
+    box: {
+        width: 1
+    },
+    persianName: 'ماه'
 }
 var mercury = {
     name: 'Mercury',
     radius: 1,
     index: 1,
-    distance: 1
+    distance: 1,
+    speed: 108.3,
+    z: 0,
+    box: {
+        width: 1
+    },
+    persianName: 'عطارد'
 }
 var venus = {
     name: 'Venus',
-    radius: 2.4,
+    radius: 1,
     index: 2,
-    distance: 2
+    distance: 2,
+    speed: 65.2,
+    z: 177,
+    box: {
+        width: 1
+    },
+    persianName: 'زهل'
 }
 var mars = {
     name: 'Mars',
-    radius: 1.3,
+    radius: 1,
     index: 5,
-    distance: 4
+    distance: 4,
+    speed: 866,
+    z: 25,
+    box: {
+        width: 1
+    },
+    persianName: 'مریخ'
 }
 var jupiter = {
     name: 'Jupiter',
-    radius: 28.7,
+    radius: 1,
     index: 6,
-    distance: 17
+    distance: 17,
+    speed: 40000,
+    z: 3,
+    box: {
+        width: 1
+    },
+    persianName: 'مشتری'
 }
 var saturn = {
     name: 'Saturn',
-    radius: 24.2,
+    radius: 0.7,
     index: 7,
-    distance: 33
+    distance: 33,
+    speed: 36840,
+    z: 27,
+    ring: {
+        radius: 1
+    },
+    box: {
+        width: 1.5
+    },
+    persianName: 'سیترن'
 }
 var uranus = {
     name: 'Uranus',
-    radius: 10.2,
+    radius: 1,
     index: 8,
-    distance: 66
+    distance: 66,
+    speed: -14894,
+    z: 98,
+    box: {
+        width: 1
+    },
+    persianName: 'ارانوس'
 }
 var neptune = {
     name: 'Neptune',
-    radius: 9.9,
+    radius: 1,
     index: 9,
-    distance: 100
+    distance: 100,
+    speed: 9719,
+    z: 28,
+    box: {
+        width: 1
+    },
+    persianName: 'نپتون'
 }
 var sun = {
     name: 'Sun',
-    radius: 40,
+    radius: 1,
     index: 0,
     star: true,
-    distance: 0
+    distance: 0,
+    speed: 216,
+    z: 0,
+    box: {
+        width: 2
+    },
+    persianName: 'خورشید'
 }
 var planets = [mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune, sun]
 

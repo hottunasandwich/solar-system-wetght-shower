@@ -2,14 +2,77 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
+    position: absolute;
+    background-color: black;
 }
+
 input[type=text] {
     color: white;
     border: none;
 }
+
 .planet {
     display: inline-block;
 }
-#sun > img {
-    height: 100vh;
+
+.name {
+    font-size: 20px;
+    color: white;
+    text-align: right;
+}
+
+div:not(.name){
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+#sun {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) !important;
+}
+
+#mercury {
+    top: 10%;
+    left: 16%;
+}
+
+#venus {
+    top: 40%;
+    left: 28%;
+}
+
+#earth {
+    top: 55%;
+    left: 50%;
+}
+
+#moon {
+    top: 40%;
+    left: 72%;
+}
+
+#mars {
+    top: 10%;
+    left: 84%;
+}
+
+#jupiter {
+    top: 60%;
+    left: 16%;
+}
+
+#saturn {
+    top: 75%;
+    left: 33%;
+}
+
+#uranus {
+    top: 75%;
+    left: 67%;
+}
+
+#neptune {
+    top: 60%;
+    left: 84%;
 }
