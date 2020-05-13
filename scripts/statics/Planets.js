@@ -101,7 +101,7 @@ var uranus = {
     box: {
         width: 1
     },
-    persianName: 'ارانوس',
+    persianName: 'اورانوس',
     scale: 0.917
 }
 var neptune = {

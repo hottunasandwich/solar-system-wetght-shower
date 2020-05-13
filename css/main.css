@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'nazanin';
+    src: url('./../fonts/B-NAZANIN.TTF');
+}
+
 body {
     margin: 0;
     width: 100vw;
@@ -15,16 +20,34 @@ input[type=text] {
     display: inline-block;
 }
 
+span {
+    padding: 0 5px 0 5px;
+    font-size: 22px;
+    font-family: 'nazanin';
+}
+
 .name {
-    font-size: 20px;
-    color: white;
+    /* color: white; */
     text-align: right;
+    font-weight: bold;
+}
+.name::after {
+    content: ':';
 }
 .weight {
-    color: white;
+    /* color: white; */
+    font-weight: bold;
+    color: blue;
+}
+.weight::after {
+    content: '   کیلوگرم  ';
 }
 .container {
+    text-align: center;
     direction: rtl;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 8px;
 }
 
 div:not(.container){
@@ -39,7 +62,7 @@ div:not(.container){
 }
 
 #mercury {
-    top: 10%;
+    top: 15%;
     left: 16%;
 }
 
@@ -53,13 +76,17 @@ div:not(.container){
     left: 50%;
 }
 
+div .container {
+    
+}
+
 #moon {
     top: 40%;
     left: 72%;
 }
 
 #mars {
-    top: 10%;
+    top: 15%;
     left: 84%;
 }
 
