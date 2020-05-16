@@ -8,12 +8,17 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "watch": "webpack --watch",
-    "electron": "electron ."
+    "electron": "electron .",
+    "dist": "electron-builder"
   },
   "author": "hottunasandwich",
+  "repository": {
+    "url": "https://github.com/hottunasandwich/solar-system-wetght-shower"
+  },
   "license": "ISC",
   "devDependencies": {
     "electron": "^8.2.5",
+    "electron-builder": "^22.6.0",
     "electron-rebuild": "^1.10.1",
     "html-loader": "^1.1.0",
     "three": "^0.115.0",
@@ -23,5 +28,17 @@
   },
   "dependencies": {
     "serialport": "^9.0.0"
+  },
+  "build": {
+    "target": "nsis",
+    "appId": "com.mrcompany.solar",
+    "productName": "Solar System",
+    "directories": {
+      "output": "${name}-${version}"
+    },
+    "nsis": {
+      "oneClick": "false",
+      "allowToChangeInstallationDirectory": "true"
+    }
   }
 }
