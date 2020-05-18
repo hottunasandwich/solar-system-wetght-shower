@@ -13,7 +13,7 @@ async function createWindow() {
   // and load the index.html of the app.
   win.loadFile('index.html')
   win.setMenuBarVisibility(false)
-
+  
   const SerialPort = require('serialport')
   SerialPort.list().then((serial) => {
     if (serial.length === 0) {
@@ -54,7 +54,7 @@ async function createWindow() {
 
 app.whenReady().then(createWindow)
 
-app.allowRendererProcessReuse = true
+// app.allowRendererProcessReuse = true
 
 function dec2bin(dec) {
   return (dec >>> 0).toString(2).padStart(7, '0');

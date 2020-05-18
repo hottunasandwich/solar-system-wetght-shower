@@ -1,99 +1,55 @@
-////////////////////////////////////////////////////////////////////////////////
-import * as THREE from 'three'
-import { inputSize, planetFixSize } from './consts'
 import planets from './statics/PLANETS';
+import weightShower from './scenes/weight-shower'
 
-import ipcRenderer from './assets/ipc-renderer'
-////////////////////////////////////////////////////////////////////////////////
-var renderlist = []
+import $ from 'jquery'
 
 window.planets = planets
 
-function init() {
+var w = weightShower()
 
-    ipcRenderer()
+window.standby = true
 
-    planets.forEach((value) => {
 
-        var scene = new THREE.Scene();
+var video = document.querySelector('video')
 
-        var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100)
-        camera.position.z = 1.7
+var j = true
 
-        var texture = new THREE.TextureLoader().load(`./images/${value.name.toLowerCase()}_.jpg`)
+async function render() {
+    requestAnimationFrame(render);
 
-        var geometry = new THREE.SphereGeometry( value.radius, 100, 100)
+    if (window.standby) {
 
-        var material = new THREE.MeshLambertMaterial({ map: texture })
+        if (j) {
 
-        var mesh = new THREE.Mesh( geometry , material )
-        scene.add( mesh )
+            $('div').toggleClass( 'hide' )
 
-        if ( value.ring ) {
+            video.play()
 
-            var ringGeometry = new THREE.RingGeometry( value.radius + 0.01, value.radius + 0.2, 100, 100);
-            var ringTexture = new THREE.TextureLoader().load(`./images/${value.name.toLowerCase()}-ring_.png`)
-            var ringMaterial = new THREE.MeshBasicMaterial({ map: ringTexture, side: THREE.DoubleSide });
-            var plane = new THREE.Mesh(ringGeometry, ringMaterial);
+            j = false
 
-            plane.rotation.x = - ( Math.PI / 3 )
-            plane.position.y = 0.2
-            plane.position.z = 0.25
-
-            scene.add(plane);
         }
 
-        var light = new THREE.AmbientLight(0x404040, 4); // soft white light
-        light.position.z = 5
-        scene.add(light);
+        video.setAttribute( 'class', '' )
 
-        var renderer = new THREE.WebGLRenderer({ anitalias: true, alpha: true });
+    } else {
 
-        renderer.setSize(( window.innerWidth / 9 ) * value.box.width, ( window.innerWidth / 9 ) * value.box.width );
-        renderer.setClearColor(0x000000, 0);
+        if (!j) {
 
-        var box = document.querySelector(`#${value.name.toLowerCase()}`)
+            video.pause()
+            
+            $('div').toggleClass( 'hide' )
 
-        box.appendChild(renderer.domElement)
-        
-        var node = document.createElement('div')
-        var w = document.createElement('span')
-        var n = document.createElement('span')
+            j = true
+        }
 
-        w.setAttribute('class', 'weight')
-        n.setAttribute('class', 'name')
-
-        node.setAttribute('class', 'container')
-
-        node.appendChild(n)
-        node.appendChild(w)
-
-        n.innerHTML = value.persianName
-
-        box.appendChild(node)
-
-
-        renderlist.push({
-            renderer: renderer,
-            scene: scene,
-            camera: camera,
-            mesh: mesh,
-            planet: value
+        video.setAttribute( 'class', 'hide' )
+        w.forEach((value) => {
+            value.renderer.render(value.scene, value.camera)
+            value.mesh.rotation.y = value.mesh.rotation.y + value.planet.speed * 0.00001
         })
 
-    })
-    // create renderer
+    }
+
 }
 
-
-function render() {
-    requestAnimationFrame(render);
-    renderlist.forEach((value) => {
-        value.renderer.render(value.scene, value.camera)
-        value.mesh.rotation.y = value.mesh.rotation.y + value.planet.speed * 0.00001
-    })
-}
-
-
-init()
 render()

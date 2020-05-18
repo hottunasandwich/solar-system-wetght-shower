@@ -1,48 +1,58 @@
 import * as THREE from 'three'
-import Planets from '../statics/PLANETS'
-import { inputSize, planetFixSize } from '../consts'
 
+export default function () {
 
+    var renderer = new THREE.WebGLRenderer()
+    renderer.setSize( window.innerWidth, window.innerHeight )
+    renderer.setClearColor( 0x000000 )
 
-var scene = new THREE.Scene();
+    var scene = new THREE.Scene();
 
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set( 100, 5, 500 )
 
+    window.planets.forEach((value, index) => {
 
-var camera = new THREE.OrthographicCamera(0, 100, 100, 100, 0, 100);
-camera.position.z = 5
+        let texture = new THREE.TextureLoader().load(`./images/${value.name.toLowerCase()}_.jpg`)
+        
+        console.log( texture )
 
+        let geometry = new THREE.SphereGeometry(value.radius, 100, 100)
 
-Planets.forEach( (value, index) => {
+        if (value.star) {
 
-    let texture = new THREE.TextureLoader().load(`./../../images/${value.name.toLowerCase()}_.jpg`)
+            var material = new THREE.MeshPhongMaterial({
+                map: texture
+            })
 
-    let geometry = new THREE.SphereGeometry(planetFixSize, 1000, 1000)
+        } else {
 
-    if ( value.star ) {
+            var material = new THREE.MeshLambertMaterial({
+                map: texture
+            })
 
-        var material = new THREE.MeshPhongMaterial({ map: texture })
+        }
 
-    } else {
+        let mesh = new THREE.Mesh(geometry, material)
 
-        var material = new THREE.MeshLambertMaterial({ map: texture })
+        mesh.position.x = value.radius + 4 
 
-    }
+        scene.add(mesh)
 
-    let mesh = new THREE.Mesh( geometry, material )
+    })
 
-    mesh.position.set( 5 * index + 2, 0, 0 )
+    document.body.appendChild( renderer.domElement )
 
-    scene.add( mesh )
+    var light = new THREE.AmbientLight(0x404040, 4)
 
-} )
+    light.position.set(0, 0, 0)
 
+    scene.add(light)
 
+    return {
+            scene: scene,
+            camera: camera,
+            renderer: renderer
+        }
 
-var light = new THREE.RectAreaLight(0x000000, 1, 8, 3)
-
-light.position.set(0,0,0)
-
-scene.add(light)
-
-
-export default { scene: scene,  camera: camera}
+}

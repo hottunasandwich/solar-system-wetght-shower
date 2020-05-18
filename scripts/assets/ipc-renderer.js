@@ -2,13 +2,39 @@ const { ipcRenderer } = require('electron')
 
 export default function () {
     window.ipc = window.ipc || {}
-    
+
+    var standbyCounter = 0
+
     ipcRenderer.on('weight', function (event, message) {
+
         console.log(message)
-        update(message)
+        
+        standby( message )
+        update( message )
     })
 
-    console.log(planets)
+    function standby (data) {
+
+        if ( data * 0.001 <= 3 ) {
+
+            standbyCounter ++ 
+
+        } else if ( data * 0.001 > 3 ) {
+
+            standbyCounter = 0
+
+            window.standby = false
+
+        }
+
+
+        if ( standbyCounter >= 200 ) {
+
+            window.standby = true
+
+        }
+
+    }
 
     function update (w) {
 

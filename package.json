@@ -9,7 +9,8 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "electron": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "rebuild": "electron-rebuild"
   },
   "author": "hottunasandwich",
   "repository": {
@@ -27,6 +28,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "jquery": "^3.5.1",
     "serialport": "^9.0.0"
   },
   "build": {

@@ -9,6 +9,7 @@ body {
     height: 100vh;
     position: absolute;
     background-color: black;
+    cursor: none;
 }
 
 input[type=text] {
@@ -53,6 +54,18 @@ span {
 div:not(.container){
     position: absolute;
     transform: translate(-50%, -50%);
+}
+
+.hide {
+    display: none;
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #sun {
